@@ -1,4 +1,6 @@
 '''Train a Bidirectional LSTM for MHG scansion.'''
+# Authors: Christopher Hench
+# ==============================================================================
 
 from __future__ import print_function
 import numpy as np

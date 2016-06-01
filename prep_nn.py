@@ -1,6 +1,9 @@
 '''This function preps multi-classfication data inputs for keras.
 Data is annotated according to the str2tuple method in NLTK.'''
 
+# Authors: Christopher Hench
+# ==============================================================================
+
 from __future__ import absolute_import
 import numpy as np
 from keras.utils import np_utils, generic_utils
