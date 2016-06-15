@@ -16,7 +16,11 @@ from keras.utils import np_utils, generic_utils
 np.random.seed(1337)  # for reproducibility
 nb_words = 20000  # max. size of vocab
 nb_classes = 10  # number of labels
-batch_size = 5  # create and update net after 10 lines
+# hidden = int(((953 + 10) / 2))
+hidden = 500  # 500 gives best results so far
+batch_size = 10  # create and update net after 10 lines
+val_split = .1
+epochs = 15
 
 # input for X is multi-dimensional numpy array with syll IDs,
 # one line per array. input y is multi-dimensional numpy array with
@@ -24,27 +28,31 @@ batch_size = 5  # create and update net after 10 lines
 # maxlen is length of longest line
 print('Loading data...')
 (X_train, y_train), (X_test, y_test), maxlen, sylls_ids, tags_ids = prep_scan(
-    nb_words=nb_words, test_split=0.1)
+    nb_words=nb_words, test_len=75)
+
+W = (y_train > 0).astype('float')
 
 print(len(X_train), 'train sequences')
-print(len(X_test), 'test sequences')
+print(int(len(X_train)*val_split), 'validation sequences')
+print(len(X_test), 'heldout sequences')
 
 # this is the placeholder tensor for the input sequences
 sequence = Input(shape=(maxlen,), dtype='int32')
 
 # this embedding layer will transform the sequences of integers
 # into vectors of size 256
-embedded = Embedding(nb_words, output_dim=256, input_length=maxlen)(sequence)
+embedded = Embedding(nb_words, output_dim=hidden,
+                     input_length=maxlen, mask_zero=True)(sequence)
 
 # apply forwards LSTM
-forwards = LSTM(output_dim=256, return_sequences=True)(embedded)
+forwards = LSTM(output_dim=hidden, return_sequences=True)(embedded)
 # apply backwards LSTM
-backwards = LSTM(output_dim=256, return_sequences=True,
+backwards = LSTM(output_dim=hidden, return_sequences=True,
                  go_backwards=True)(embedded)
 
 # concatenate the outputs of the 2 LSTMs
 merged = merge([forwards, backwards], mode='concat', concat_axis=-1)
-after_dp = Dropout(0.5)(merged)
+after_dp = Dropout(0.15)(merged)
 
 # TimeDistributed for sequence
 # change activation to sigmoid?
@@ -57,14 +65,18 @@ model = Model(input=sequence, output=output)
 # try using different optimizers and different optimizer configs
 # loss=binary_crossentropy, optimizer=rmsprop
 model.compile(loss='categorical_crossentropy',
-              metrics=['accuracy'], optimizer='adam')
+              metrics=['accuracy'], optimizer='adam',
+              sample_weight_mode='temporal')
 
 print('Train...')
 model.fit(X_train, y_train,
           batch_size=batch_size,
-          nb_epoch=5,
+          nb_epoch=epochs,
           shuffle=True,
-          validation_data=[X_test, y_test])
+          validation_split=val_split,
+          sample_weight=W)
+
+# held-out testing:
 
 # predict
 X_test_new = X_test[:3]
