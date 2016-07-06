@@ -13,4 +13,4 @@ scan_text/corrections.csv
 
 .gitignore
 
-__pycache__
+__pycache__/
