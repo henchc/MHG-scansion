@@ -11,8 +11,8 @@ from __future__ import absolute_import
 import codecs
 import pycrfsuite
 from get_features import get_features
-from meteryield import mhgscansion
 from syllable2features import syllable2features
+import pickle
 
 
 def line2features(line):
@@ -22,12 +22,10 @@ def line2features(line):
 tagger = pycrfsuite.Tagger()
 tagger.open('MHG_METER.crfsuite')
 
-
 with open("parzival.txt", 'r', encoding='utf-8') as f:
     text = f.read()  # text must be clean
 
 text_with_features = get_features(text)
-
 text_tags = [tagger.tag(line2features(line)) for line in text_with_features]
 
 # add back tags to features
@@ -65,7 +63,7 @@ for line in words_sylls_labels:
         stress_present = 0
         for syll in word:
             rev_syll = syll
-            if syll[-1] == "MORA_HAUPT" or syll[-1] == "DOPPEL" or syll[-1] == "HALB_HAUPT":
+            if (syll[-1] == "MORA_HAUPT" or syll[-1] == "DOPPEL" or syll[-1] == "HALB_HAUPT"):
                 stress_present += 1
                 if stress_present > 1:
                     if syll[-1] == "MORA_HAUPT":
@@ -77,10 +75,5 @@ for line in words_sylls_labels:
         rev_line.append(rev_word)
     tags_n_stress.append(rev_line)
 
-print(tags_n_stress)
-
-# make nice symbols (not necessary for data analysis, only for print)
-# towrite = mhgscansion(tags_n_stress)
-#
-# with codecs.open('scanned_text.txt', 'w', 'utf-8') as f:
-#     f.write(to_write)
+# save results for further processing
+pickle.dump(tags_n_stress, open("scanned_data.pkl", "wb"))

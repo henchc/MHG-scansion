@@ -25,6 +25,7 @@ import re
 import numpy as np
 import pandas as pd
 import random
+from scan_text_rev import only_four_stresses
 
 
 def syllableend(syl):
@@ -715,21 +716,36 @@ for i, inds in enumerate(test_inds):
 
     # parameters to fiddle with
     trainer.set_params({
-        'c1': 1.3,   # coefficient for L1 penalty
-        'c2': 10e-4,  # coefficient for L2 penalty
-        # 'num_memories': 10,
+        'c1': 1.3,   # coefficient for L1 penalty default 0
+        'c2': 10e-4,  # coefficient for L2 penalty default 1
+        'num_memories': 6,  # default is 6
+        # 'delta': 1e-5,  # 1e-5 is default
         # 'max_iterations': 100,  # stop earlier
 
         # include transitions that are possible, but not observed
-        'feature.possible_transitions': True,
-        # 'max_linesearch': 1000,
-        # 'linesearch': 'Backtracking'
+        'feature.possible_transitions': False,  # default is False
+        # 'max_linesearch': 1000,  # default 20
+        # 'linesearch': 'Backtracking'  # default MoreThuente
         # 'feature.minfreq': 5
-        # 'feature.possible_states': True,
+        # 'feature.possible_states': True,  # default is False
+
+        # # averaged perceptron
+        # 'max_iterations' : 1000  # default is 100
     })
 
     # run trainer and tagger
     trainer.params()
+
+    '''
+    default is lbfgs
+    • ‘lbfgs’ for Gradient descent using the L-BFGS method,
+    • ‘l2sgd’ for Stochastic Gradient Descent with L2 regularization term
+    • ‘ap’ for Averaged Perceptron
+    • ‘pa’ for Passive Aggressive
+    • ‘arow’ for Adaptive Regularization Of Weight Vector
+    '''
+
+    # trainer.select('ap', type='crf1d')
     trainer.train('MHGMETRICS_dev.crfsuite')
     tagger = pycrfsuite.Tagger()
     tagger.open('MHGMETRICS_dev.crfsuite')
@@ -765,7 +781,8 @@ for i, inds in enumerate(test_inds):
                    target_names=tagset,
                )), labs)
 
-    y_pred = [tagger.tag(xseq) for xseq in X_test]
+    # y_pred = [tagger.tag(xseq) for xseq in X_test]
+    y_pred = only_four_stresses(X_test, tagger)
 
     bioc = bio_classification_report(y_test, y_pred)
 
