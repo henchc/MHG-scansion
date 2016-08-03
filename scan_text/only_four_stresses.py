@@ -66,4 +66,28 @@ def only_four_stresses(lines_w_features, tagger):
         else:
             four_stress.append(t_line)
 
-    return(four_stress)
+    final_labels = []
+    for line in four_stress:
+        count = 0
+        new_line = []
+        for i, l in enumerate(line):
+
+            # fix /  X' ◡   /
+            if (0 < i < (len(line) - 1) and
+                    line[i - 1] == "MORA_HAUPT" and
+                    l == "HALB" and
+                    line[i + 1] in stressed):
+                new_line.append("MORA")
+            else:
+                new_line.append(l)
+        final_labels.append(new_line)
+        # if l in ["MORA_HAUPT", "MORA"]:
+        #     count += 1
+        # elif l == "DOPPEL":e
+        #     count += 2
+        # elif l in ["HALB_HAUPT", "HALB"]:
+        #     count += .5
+        # elif l == "EL":
+        #     count += 0
+
+    return(final_labels)
