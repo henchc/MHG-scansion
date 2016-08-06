@@ -81,13 +81,41 @@ def only_four_stresses(tags, tagger):
             else:
                 new_line.append(l)
         final_labels.append(new_line)
-        # if l in ["MORA_HAUPT", "MORA"]:
-        #     count += 1
-        # elif l == "DOPPEL":e
-        #     count += 2
-        # elif l in ["HALB_HAUPT", "HALB"]:
-        #     count += .5
-        # elif l == "EL":
-        #     count += 0
+
+    final_labels2 = []
+    for line in final_labels:
+        new_line = []
+        for i, l in enumerate(line):
+
+            # fix /  X' ◡ X  / X'
+            if (1 < i < (len(line) - 1) and
+                    line[i - 1] == "HALB" and
+                    line[i - 2] == "MORA_HAUPT" and
+                    l == "MORA" and
+                    line[i + 1] in stressed):
+                new_line.append("HALB")
+            else:
+                new_line.append(l)
+        final_labels2.append(new_line)
+
+    final_labels = final_labels2
+
+    final_labels2 = []
+    for line in final_labels:
+        new_line = []
+        for i, l in enumerate(line):
+
+            # fix /  X' X ◡  / X'
+            if (0 < i < (len(line) - 2) and
+                    line[i - 1] == "MORA_HAUPT" and
+                    l == "MORA" and
+                    line[i + 1] == "HALB" and
+                    line[i + 2] in stressed):
+                new_line.append("HALB")
+            else:
+                new_line.append(l)
+        final_labels2.append(new_line)
+
+    final_labels = final_labels2
 
     return(final_labels)
