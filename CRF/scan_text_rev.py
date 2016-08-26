@@ -118,4 +118,19 @@ def only_four_stresses(tags, tagger):
 
     final_labels = final_labels2
 
+    # final_labels2 = []
+    # for line in final_labels:
+    #     stress_count = 0
+    #     for l in line:
+    #         if l in stressed:
+    #             stress_count += 1
+
+    #     new_line = line
+    #     # fix more than 4 stresses
+    #     if stress_count > 4 and line[-2] == "DOPPEL" and line[-1] in stressed:
+    #         new_line = line[:-2] + ["HALB_HAUPT", "HALB"]
+    #     final_labels2.append(new_line)
+
+    # final_labels = final_labels2
+
     return(final_labels)
