@@ -87,6 +87,9 @@ def syllableweight(syl):
 
 def prepcrf(taggedstring):
 
+    taggedstring = taggedstring.replace("MORA_NEBEN", "MORA_HAUPT")
+    taggedstring = taggedstring.replace("HALB_NEBEN", "HALB_HAUPT")
+
     # break data into list on line breaks
     tagged = taggedstring.split('\n')
 
@@ -99,13 +102,8 @@ def prepcrf(taggedstring):
             newtups = []
             for tup in news:
                 # adds syllable characteristics to tuple for being feature
-                syllweight = (
-                    tup[0],
-                    syllableend(
-                        tup[0]) +
-                    syllableweight(
-                        tup[0]),
-                    tup[1])
+                syllweight = (tup[0], syllableend(tup[0]) +
+                              syllableweight(tup[0]), tup[1])
                 newtups.append(syllweight)
             training.append(newtups)
 
@@ -785,10 +783,8 @@ ext_labels = [
     "EL",
     "HALB",
     "HALB_HAUPT",
-    "HALB_NEBEN",
     "MORA",
-    "MORA_HAUPT",
-    "MORA_NEBEN"]
+    "MORA_HAUPT"]
 abs_labels = [l for l in ext_labels if l not in all_labels]
 
 # print(bio_classification_report(y_test, y_pred)[1])
@@ -805,16 +801,6 @@ data = {
 df = pd.DataFrame(data)
 
 if len(abs_labels) > 0:
-    if "HALB_NEBEN" in abs_labels:
-        line = pd.DataFrame({"labels": "HALB_NEBEN",
-                             "precision": 0,
-                             "recall": 0,
-                             "f1": 0,
-                             "support": 0,
-                             "tots": 0,
-                             "all_s": 0},
-                            index=[4])
-        df = pd.concat([df.ix[:3], line, df.ix[4:]]).reset_index(drop=True)
     if "EL" in abs_labels:
         line = pd.DataFrame({"labels": "EL",
                              "precision": 0,

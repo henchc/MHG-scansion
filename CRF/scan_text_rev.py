@@ -11,61 +11,54 @@ from __future__ import absolute_import
 import codecs
 import pycrfsuite
 import numpy as np
+import itertools
 
 
-def only_four_stresses(tags, tagger):
+def only_four_stresses(lines_w_features, tagger):
     labs = ["MORA_HAUPT", "MORA", "DOPPEL", "HALB_HAUPT", "HALB", "EL"]
     stressed = ["MORA_HAUPT", "DOPPEL", "HALB_HAUPT"]
     four_stress = []
-    for line in tags:
+    for line in lines_w_features:
+
         t_line = tagger.tag(line)
+
         stress = 0
         for l in t_line:
             if l in stressed:
                 stress += 1
-        if stress > 4:
-            l_n_s = []
-            # take four likeliest stresses, everyhting else make second prob
-            top_probs = []
+
+        if stress != 4:
+            line_probs = []
             for i, l in enumerate(t_line):
-                if l in stressed:
-                    top_probs.append((i, tagger.marginal(l, i)))
+                probs = [(l, tagger.marginal(l, i)) for l in labs]
+                probs = sorted(probs, key=lambda tup: tup[1], reverse=True)
+                if probs[0][1] > .9:
+                    line_probs.append(probs[:2])
+                else:
+                    line_probs.append(probs[:4])
 
-            top_probs = sorted(top_probs, key=lambda tup: tup[1], reverse=True)
-            to_change = [i for i in top_probs[4:]]
+            combos = itertools.product(*line_probs)
 
-            for i, l in enumerate(t_line):
-                new_l = l
-                if i in [x[0] for x in to_change]:
-                    prob_tups = []
-                    for lb in labs:
-                        prob_tups.append((lb, tagger.marginal(lb, i)))
-                    sorted_probs = sorted(prob_tups, key=lambda tup: tup[1],
-                                          reverse=True)
-                    sorted_probs = [x for x in sorted_probs if x[0] not in
-                                    stressed]
-                    if len(sorted_probs) > 0:
-                        new_l = sorted_probs[0][0]
-                    else:
-                        new_l = l
+            final_line = (0, 0)
+            for c in combos:
+                stress = 0
+                tot_prob = 0
+                for l in c:
+                    tot_prob += l[1]
+                    if l[0] in stressed:
+                        stress += 1
 
-                if tagger.marginal(l, i) < .95 and l not in stressed:
-                    prob_tups = []
-                    for lb in labs:
-                        prob_tups.append((lb, tagger.marginal(lb, i)))
-                    sorted_probs = sorted(prob_tups, key=lambda tup: tup[1],
-                                          reverse=True)
-                    sorted_probs = [x for x in sorted_probs if x[0] not in
-                                    stressed]
-                    new_l = sorted_probs[1][0]
+                if stress == 4 and tot_prob > final_line[1]:
+                    final_line = (c, tot_prob)
 
-                l_n_s.append(new_l)
+            try:
+                t_line = [x[0] for x in final_line[0]]
+            except TypeError:
+                continue
 
-            four_stress.append(l_n_s)
+        four_stress.append(t_line)
 
-        else:
-            four_stress.append(t_line)
-
+    # additional fixes
     final_labels = []
     for line in four_stress:
         count = 0
@@ -118,19 +111,23 @@ def only_four_stresses(tags, tagger):
 
     final_labels = final_labels2
 
-    # final_labels2 = []
-    # for line in final_labels:
-    #     stress_count = 0
-    #     for l in line:
-    #         if l in stressed:
-    #             stress_count += 1
+    final_labels2 = []
+    for line in final_labels:
+        new_line = line
+        for i, l in enumerate(line):
 
-    #     new_line = line
-    #     # fix more than 4 stresses
-    #     if stress_count > 4 and line[-2] == "DOPPEL" and line[-1] in stressed:
-    #         new_line = line[:-2] + ["HALB_HAUPT", "HALB"]
-    #     final_labels2.append(new_line)
+            # fix /  X' X X  / X'
+            if (0 < i < (len(line) - 2) and
+                    line[i - 1] == "MORA_HAUPT" and
+                    l == "MORA" and
+                    line[i + 1] == "MORA" and
+                    line[i + 2] in stressed):
 
-    # final_labels = final_labels2
+                new_line[i] = "HALB"
+                new_line[i + 1] = "HALB"
+
+        final_labels2.append(new_line)
+
+    final_labels = final_labels2
 
     return(final_labels)
