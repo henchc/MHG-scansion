@@ -44,9 +44,8 @@ def only_four_stresses(lines_w_features, tagger, sylls):
             if t_line[i2] in stressed:
                 stress += 1
 
-            accs = ["MORA_HAUPT", "MORA_NEBEN"]
-            if i2 > 0 and l in accs:  # rule out if two
-                if t_line[i2 - 1] in accs:
+            if i2 > 0 and l == "MORA_HAUPT":  # rule out if two
+                if t_line[i2 - 1] == "MORA_HAUPT":
                     stress += 5
 
             if i2 < len(t_line) - 1 and l == "DOPPEL":
@@ -80,12 +79,11 @@ def only_four_stresses(lines_w_features, tagger, sylls):
                         stress += 1
                     if i4 < (
                             len(c) - 1) and l[0] == "DOPPEL":  # rule out if no stress after double
-                        if c[i4 + 1] not in stressed:
+                        if c[i4 + 1][0] not in stressed:
                             stress += 5
 
-                    accs = ["MORA_HAUPT", "MORA_NEBEN"]
-                    if i4 > 0 and l[0] in accs:  # rule out if two
-                        if c[i4 - 1] in accs:
+                    if i4 > 0 and l[0] == "MORA_HAUPT":  # rule out if two
+                        if c[i4 - 1][0] == "MORA_HAUPT":
                             stress += 5
 
                 if stress == 4 and tot_prob > final_line[1]:
@@ -170,13 +168,14 @@ def only_four_stresses(lines_w_features, tagger, sylls):
 
     final_labels = final_labels2
 
+    # # fix endings with light halves
     # final_labels2 = []
     # prefixes = ["ge", "be", "en"]
     # for i, line in enumerate(final_labels):
     #     new_line = line
     #     if line[-4:] == ["MORA_HAUPT", "HALB", "HALB", "MORA_HAUPT"]:
-    #         if len(sylls[i][-1]) > 1 and sylls[i][-1][-2].lower(
-    #         ) not in prefixes and syllableweight(sylls[i][-1][-2].lower()) == "L":
+    #         if len(sylls[i][-1]) > 1 and sylls[
+    #                 i][-1][-2] not in prefixes and syllableweight(sylls[i][-1][-2]) == "L":
     #             new_line[-4:] = ["MORA_HAUPT", "MORA", "HALB_HAUPT", "HALB"]
 
     #     final_labels2.append(new_line)
