@@ -702,6 +702,8 @@ for i, inds in enumerate(test_inds):
     for x in train_inds:
         train_lines.append(ftuples[x])
 
+    sylls_list = [[t[0] for t in l] for l in test_lines]
+
     # separate data and train
     X_train = [line2features(s) for s in train_lines]
     y_train = [line2labels(s) for s in train_lines]
@@ -782,7 +784,7 @@ for i, inds in enumerate(test_inds):
                )), labs)
 
     # y_pred = [tagger.tag(xseq) for xseq in X_test]
-    y_pred = only_four_stresses(X_test, tagger)
+    y_pred = only_four_stresses(X_test, tagger, sylls_list)
 
     bioc = bio_classification_report(y_test, y_pred)
 
@@ -867,7 +869,7 @@ for i, inds in enumerate(test_inds):
     # print("\nTop negative:")
     # print_state_features(Counter(info.state_features).most_common()[-20:])
 
-    print("Fold " + str(i+1) + " complete.\n")
+    print("Fold " + str(i + 1) + " complete.\n")
 
 
 df_all["p_AVG"] = df_all.w_p / df_all.support

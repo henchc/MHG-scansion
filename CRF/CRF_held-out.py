@@ -166,6 +166,7 @@ with open("Data/CLFL_held-out.txt", 'r', encoding='utf-8') as f:
 
 # add features to data
 htuples = prepcrf(heldout)
+sylls_list = [[t[0] for t in l] for l in htuples]
 
 
 # designate features for model to collect
@@ -754,7 +755,7 @@ def bio_classification_report(y_true, y_pred):
 
 
 # y_pred = [tagger.tag(xseq) for xseq in X_test]
-y_pred = only_four_stresses(X_test, tagger)
+y_pred = only_four_stresses(X_test, tagger, sylls_list)
 bioc = bio_classification_report(y_test, y_pred)
 
 p, r, f1, s = bioc[0]

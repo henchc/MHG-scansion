@@ -14,23 +14,54 @@ import numpy as np
 import itertools
 
 
-def only_four_stresses(lines_w_features, tagger):
+import codecs
+import pycrfsuite
+import numpy as np
+from get_features import get_features
+import itertools
+from get_features import syllableweight
+
+
+def only_four_stresses(lines_w_features, tagger, sylls):
     labs = ["MORA_HAUPT", "MORA", "DOPPEL", "HALB_HAUPT", "HALB", "EL"]
     stressed = ["MORA_HAUPT", "DOPPEL", "HALB_HAUPT"]
     four_stress = []
-    for line in lines_w_features:
+
+    for i, line in enumerate(lines_w_features):
 
         t_line = tagger.tag(line)
 
+        line_sylls = sylls[i]
+
         stress = 0
-        for l in t_line:
-            if l in stressed:
+        for i2, l in enumerate(t_line):
+
+            # no doppel can be light
+            if l == "DOPPEL" and syllableweight(line_sylls[i2]) == "L":
+                # unaccented so it get sent to recalculate without doppel
+                stress += 5
+
+            if t_line[i2] in stressed:
                 stress += 1
+
+            accs = ["MORA_HAUPT", "MORA_NEBEN"]
+            if i2 > 0 and l in accs:  # rule out if two
+                if t_line[i2 - 1] in accs:
+                    stress += 5
+
+            if i2 < len(t_line) - 1 and l == "DOPPEL":
+                if t_line[i2 + 1] not in stressed:
+                    stress += 5
 
         if stress != 4:
             line_probs = []
-            for i, l in enumerate(t_line):
-                probs = [(l, tagger.marginal(l, i)) for l in labs]
+            for i3, l in enumerate(t_line):
+                probs = [(l, tagger.marginal(l, i3)) for l in labs]
+
+                # no doppel can be light
+                if syllableweight(line_sylls[i3]) == "L":
+                    probs = [x for x in probs if x[0] != "DOPPEL"]
+
                 probs = sorted(probs, key=lambda tup: tup[1], reverse=True)
                 if probs[0][1] > .9:
                     line_probs.append(probs[:2])
@@ -43,10 +74,19 @@ def only_four_stresses(lines_w_features, tagger):
             for c in combos:
                 stress = 0
                 tot_prob = 0
-                for l in c:
+                for i4, l in enumerate(c):
                     tot_prob += l[1]
                     if l[0] in stressed:
                         stress += 1
+                    if i4 < (
+                            len(c) - 1) and l[0] == "DOPPEL":  # rule out if no stress after double
+                        if c[i4 + 1] not in stressed:
+                            stress += 5
+
+                    accs = ["MORA_HAUPT", "MORA_NEBEN"]
+                    if i4 > 0 and l[0] in accs:  # rule out if two
+                        if c[i4 - 1] in accs:
+                            stress += 5
 
                 if stress == 4 and tot_prob > final_line[1]:
                     final_line = (c, tot_prob)
@@ -54,7 +94,7 @@ def only_four_stresses(lines_w_features, tagger):
             try:
                 t_line = [x[0] for x in final_line[0]]
             except TypeError:
-                continue
+                pass
 
         four_stress.append(t_line)
 
@@ -129,5 +169,18 @@ def only_four_stresses(lines_w_features, tagger):
         final_labels2.append(new_line)
 
     final_labels = final_labels2
+
+    # final_labels2 = []
+    # prefixes = ["ge", "be", "en"]
+    # for i, line in enumerate(final_labels):
+    #     new_line = line
+    #     if line[-4:] == ["MORA_HAUPT", "HALB", "HALB", "MORA_HAUPT"]:
+    #         if len(sylls[i][-1]) > 1 and sylls[i][-1][-2].lower(
+    #         ) not in prefixes and syllableweight(sylls[i][-1][-2].lower()) == "L":
+    #             new_line[-4:] = ["MORA_HAUPT", "MORA", "HALB_HAUPT", "HALB"]
+
+    #     final_labels2.append(new_line)
+
+    # final_labels = final_labels2
 
     return(final_labels)
