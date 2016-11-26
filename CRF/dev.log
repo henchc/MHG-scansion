@@ -1,0 +1,145 @@
+             precision    recall  f1-score   support
+
+     DOPPEL       0.93      0.90      0.91        48
+         EL       0.71      0.62      0.67         8
+       HALB       0.55      0.73      0.63        15
+ HALB_HAUPT       0.75      1.00      0.86         9
+       MORA       0.95      0.94      0.94       253
+ MORA_HAUPT       0.96      0.95      0.96       243
+
+avg / total       0.94      0.93      0.93       576
+
+Fold 1 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.98      0.88      0.92        48
+         EL       0.60      0.60      0.60         5
+       HALB       0.77      0.55      0.64        31
+ HALB_HAUPT       0.82      0.69      0.75        13
+       MORA       0.93      0.97      0.95       238
+ MORA_HAUPT       0.93      0.96      0.95       238
+
+avg / total       0.92      0.92      0.92       573
+
+Fold 2 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.91      0.87      0.89        47
+         EL       1.00      1.00      1.00         6
+       HALB       0.78      0.78      0.78        27
+ HALB_HAUPT       0.94      0.89      0.92        19
+       MORA       0.93      0.94      0.93       231
+ MORA_HAUPT       0.94      0.95      0.95       235
+
+avg / total       0.93      0.93      0.93       565
+
+Fold 3 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.84      0.89      0.86        36
+         EL       1.00      0.71      0.83         7
+       HALB       0.67      0.67      0.67        21
+ HALB_HAUPT       0.86      0.86      0.86         7
+       MORA       0.94      0.93      0.94       244
+ MORA_HAUPT       0.95      0.95      0.95       254
+
+avg / total       0.92      0.92      0.92       569
+
+Fold 4 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.93      0.89      0.91        45
+         EL       1.00      0.71      0.83         7
+       HALB       0.45      0.50      0.47        18
+ HALB_HAUPT       0.71      0.83      0.77         6
+       MORA       0.95      0.95      0.95       234
+ MORA_HAUPT       0.96      0.96      0.96       249
+
+avg / total       0.94      0.93      0.93       559
+
+Fold 5 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.92      0.90      0.91        40
+         EL       0.83      1.00      0.91         5
+       HALB       0.58      0.58      0.58        26
+ HALB_HAUPT       0.67      0.80      0.73        10
+       MORA       0.93      0.93      0.93       244
+ MORA_HAUPT       0.94      0.94      0.94       249
+
+avg / total       0.91      0.91      0.91       574
+
+Fold 6 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.89      0.87      0.88        46
+         EL       1.00      0.83      0.91         6
+       HALB       0.68      0.62      0.65        21
+ HALB_HAUPT       1.00      1.00      1.00        11
+       MORA       0.91      0.92      0.92       229
+ MORA_HAUPT       0.93      0.93      0.93       243
+
+avg / total       0.91      0.91      0.91       556
+
+Fold 7 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.93      0.81      0.87        32
+         EL       1.00      0.33      0.50         6
+       HALB       0.75      0.94      0.83        16
+ HALB_HAUPT       0.73      1.00      0.84         8
+       MORA       0.96      0.96      0.96       257
+ MORA_HAUPT       0.97      0.97      0.97       260
+
+avg / total       0.95      0.95      0.95       579
+
+Fold 8 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.84      0.81      0.83        47
+         EL       0.80      0.57      0.67         7
+       HALB       0.54      0.62      0.58        24
+ HALB_HAUPT       0.89      0.57      0.70        14
+       MORA       0.92      0.91      0.92       238
+ MORA_HAUPT       0.92      0.95      0.94       238
+
+avg / total       0.90      0.90      0.90       568
+
+Fold 9 complete.
+
+             precision    recall  f1-score   support
+
+     DOPPEL       0.94      0.89      0.91        36
+         EL       1.00      0.88      0.93         8
+       HALB       0.71      0.53      0.61        32
+ HALB_HAUPT       0.89      0.80      0.84        10
+       MORA       0.93      0.96      0.94       235
+ MORA_HAUPT       0.95      0.96      0.95       253
+
+avg / total       0.92      0.93      0.92       574
+
+Fold 10 complete.
+
+   all_s                                             labels  support  \
+0   5693  DOPPELDOPPELDOPPELDOPPELDOPPELDOPPELDOPPELDOPP...      425   
+1   5693                               ELELELELELELELELELEL       65   
+2   5693           HALBHALBHALBHALBHALBHALBHALBHALBHALBHALB      231   
+3   5693  HALB_HAUPTHALB_HAUPTHALB_HAUPTHALB_HAUPTHALB_H...      107   
+4   5693           MORAMORAMORAMORAMORAMORAMORAMORAMORAMORA     2403   
+5   5693  MORA_HAUPTMORA_HAUPTMORA_HAUPTMORA_HAUPTMORA_H...     2462   
+
+      p_AVG     r_AVG    f1_AVG  tots_AVG  
+0  0.912586  0.870588  0.890652  0.924727  
+1  0.899707  0.723077  0.786667  0.924117  
+2  0.658861  0.636364  0.641124  0.923576  
+3  0.845184  0.831776  0.829055  0.000000  
+4  0.935878  0.940075  0.937907  0.000000  
+5  0.945003  0.954102  0.949495  0.000000  
