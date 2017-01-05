@@ -1,5 +1,7 @@
 CRF/Data/
 
+CRF/Data2/
+
 CRF_stressonly/
 
 CRF/__pycache__
@@ -18,3 +20,5 @@ __pycache__/
 scan_text/GUI/corrections.csv
 
 scan_text/GUI/syllabipymhg3.py
+
+*.crfsuite

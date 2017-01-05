@@ -67,13 +67,17 @@ def only_four_stresses(lines_w_features, tagger, sylls):
                 if t_line[i2 - 1] in accs:
                     stress += 5
 
+            if 0 < i2 < len(t_line) - 1 and l == "EL":
+                if t_line[i2 - 1] in accs and t_line[i2 + 1] in accs:
+                    stress += 5
+
         # if > 4 stresses, look at probs
         if stress != 4:
             line_probs = []
             for i3, l in enumerate(t_line):
 
                 # marginal probablities
-                probs = [(l, tagger.marginal(l, i3)) for l in labs]
+                probs = [(lb, tagger.marginal(lb, i3)) for lb in labs]
 
                 # no doppel can be light
                 if syllableweight(line_sylls[i3]) == "L":
@@ -117,6 +121,10 @@ def only_four_stresses(lines_w_features, tagger, sylls):
 
                     if i4 > 0 and l[0] == "DOPPEL":  # no stress b4 double
                         if c[i4 - 1][0] in accs:
+                            stress += 5
+
+                    if 0 < i4 < len(c) - 1 and l == "EL":
+                        if c[i4 - 1] in accs and c[i4 + 1] in accs:
                             stress += 5
 
                 if stress == 4 and tot_prob > final_line[1]:
