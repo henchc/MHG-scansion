@@ -14,8 +14,6 @@ scan_text/syllabipymhg3.py
 
 scan_text/corrections.csv
 
-.gitignore
-
 __pycache__/
 scan_text/GUI/corrections.csv
 

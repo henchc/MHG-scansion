@@ -284,12 +284,12 @@ for xseq, yseq in zip(X_train, y_train):
 # parameters to fiddle with
 trainer.set_params({
     'c1': 1.3,   # coefficient for L1 penalty
-    'c2': 10e-4,  # coefficient for L2 penalty
-    # 'num_memories': 10,
+    'c2': 10e-3,  # coefficient for L2 penalty
+    'num_memories': 6,  # default is 6
     # 'max_iterations': 100,  # stop earlier
 
     # include transitions that are possible, but not observed
-    'feature.possible_transitions': True,
+    'feature.possible_transitions': False,
     # 'max_linesearch': 1000,
     # 'linesearch': 'Backtracking'
     # 'feature.minfreq': 5

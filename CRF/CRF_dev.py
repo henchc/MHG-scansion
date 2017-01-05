@@ -307,7 +307,7 @@ for i, inds in enumerate(test_inds):
     # parameters to fiddle with
     trainer.set_params({
         'c1': 1.3,   # coefficient for L1 penalty default 0
-        'c2': 10e-4,  # coefficient for L2 penalty default 1
+        'c2': 10e-3,  # coefficient for L2 penalty default 1 or -4
         'num_memories': 6,  # default is 6
         # 'delta': 1e-5,  # 1e-5 is default
         # 'max_iterations': 100,  # stop earlier
