@@ -1,145 +1,936 @@
              precision    recall  f1-score   support
 
-     DOPPEL       0.93      0.90      0.91        48
-         EL       0.71      0.62      0.67         8
-       HALB       0.55      0.73      0.63        15
- HALB_HAUPT       0.75      1.00      0.86         9
-       MORA       0.95      0.94      0.94       253
- MORA_HAUPT       0.96      0.95      0.96       243
+     DOPPEL       0.89      0.89      0.89        55
+         EL       1.00      0.50      0.67         2
+       HALB       0.85      0.46      0.59        24
+ HALB_HAUPT       1.00      0.88      0.93         8
+       MORA       0.90      0.95      0.92       220
+ MORA_HAUPT       0.93      0.94      0.93       236
 
-avg / total       0.94      0.93      0.93       576
+avg / total       0.91      0.91      0.91       545
+
+Top likely transitions:
+HALB_HAUPT -> HALB    7.168339
+MORA_HAUPT -> MORA    5.952659
+HALB   -> HALB    5.125824
+MORA_HAUPT -> HALB    5.022959
+DOPPEL -> MORA_HAUPT 4.743398
+MORA_HAUPT -> EL      3.619914
+MORA   -> MORA_HAUPT 3.282266
+MORA   -> DOPPEL  2.728650
+DOPPEL -> HALB_HAUPT 1.943615
+EL     -> MORA    1.632962
+MORA   -> HALB_HAUPT 1.484706
+HALB   -> MORA_HAUPT 0.768315
+DOPPEL -> MORA    -0.205806
+MORA_HAUPT -> DOPPEL  -0.207082
+EL     -> MORA_HAUPT -0.582876
+
+Top unlikely transitions:
+HALB   -> HALB    5.125824
+MORA_HAUPT -> HALB    5.022959
+DOPPEL -> MORA_HAUPT 4.743398
+MORA_HAUPT -> EL      3.619914
+MORA   -> MORA_HAUPT 3.282266
+MORA   -> DOPPEL  2.728650
+DOPPEL -> HALB_HAUPT 1.943615
+EL     -> MORA    1.632962
+MORA   -> HALB_HAUPT 1.484706
+HALB   -> MORA_HAUPT 0.768315
+DOPPEL -> MORA    -0.205806
+MORA_HAUPT -> DOPPEL  -0.207082
+EL     -> MORA_HAUPT -0.582876
+MORA   -> MORA    -0.625384
+MORA_HAUPT -> MORA_HAUPT -1.240050
+
+Top positive:
+5.435130 DOPPEL lh=H
+3.973509 MORA_HAUPT lpos=ENDL
+3.611395 EL     +1:syllable[:1]=e
+2.639201 EL     +1:syllable[:1]=i
+2.537393 MORA_HAUPT lh=H
+2.494631 DOPPEL +1:wpos=WBYR
+2.418815 MORA   +7:lpos=LPNA
+2.310417 EL     +1:syllable[:1]=a
+2.195469 HALB_HAUPT lh=L
+2.175230 EL     +1:syllable[:2]=ou
+1.648206 MORA   +5:syllable[:2]=li
+1.626016 DOPPEL bias
+1.511625 DOPPEL +1:lh=L
+1.401371 EL     syllable[-1:]=e
+1.302086 HALB   (-1:syllable[-1] + syllable[0])=%snege
+1.255692 MORA   +6:lh=H
+1.240411 MORA   lpos=BEGL
+1.226635 DOPPEL +1:syllable[-2:]=en
+1.208616 HALB   +2:lh=H
+1.147778 HALB   -1:wpos=WBYR
+
+Top negative:
+-0.865376 MORA_HAUPT lpos=LPNA
+-0.873414 MORA_HAUPT +1:lh=H
+-0.885961 MORA_HAUPT syllable[:2]=ge
+-0.889571 HALB_HAUPT wpos=WBYR
+-0.941551 EL     lh=H
+-0.989445 DOPPEL -1:oc=O
+-1.020245 MORA   +1:syllable[:2]=be
+-1.059351 MORA   +1:syllable[:1]=u
+-1.078658 MORA   +1:syllable[-2:]=et
+-1.087285 MORA_HAUPT +4:len(syllable)=1
+-1.105504 MORA   len(syllable)=5
+-1.137805 MORA_HAUPT +7:wpos=WBYR
+-1.268357 MORA_HAUPT +1:syllable[:2]=mî
+-1.295664 MORA_HAUPT wpos=WBYR
+-1.312304 MORA   +1:syllable[-2:]=en
+-1.439266 HALB   -2:lh=L
+-1.472621 MORA   +4:syllable[:2]=ma
+-1.718698 DOPPEL +5:lh=H
+-1.983169 HALB   wpos=WBYL
+-2.890330 MORA_HAUPT +1:lpos=ENDL
 
 Fold 1 complete.
+------------------------------------------------------
+------------------------------------------------------
+
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.98      0.88      0.92        48
-         EL       0.60      0.60      0.60         5
-       HALB       0.77      0.55      0.64        31
- HALB_HAUPT       0.82      0.69      0.75        13
-       MORA       0.93      0.97      0.95       238
- MORA_HAUPT       0.93      0.96      0.95       238
+     DOPPEL       0.95      0.80      0.86        44
+         EL       0.80      0.50      0.62         8
+       HALB       0.57      0.84      0.68        19
+ HALB_HAUPT       0.73      0.89      0.80         9
+       MORA       0.95      0.93      0.94       246
+ MORA_HAUPT       0.94      0.96      0.95       247
 
-avg / total       0.92      0.92      0.92       573
+avg / total       0.93      0.92      0.93       573
+
+Top likely transitions:
+HALB_HAUPT -> HALB    7.073579
+MORA_HAUPT -> MORA    6.908147
+MORA_HAUPT -> HALB    5.285483
+HALB   -> HALB    4.646928
+DOPPEL -> MORA_HAUPT 4.276168
+MORA_HAUPT -> EL      4.042793
+MORA   -> MORA_HAUPT 3.381654
+MORA   -> DOPPEL  2.970047
+EL     -> MORA    2.556847
+DOPPEL -> HALB_HAUPT 2.065229
+MORA   -> HALB_HAUPT 2.056863
+HALB   -> MORA_HAUPT 0.095575
+MORA_HAUPT -> MORA_HAUPT -1.196959
+
+Top unlikely transitions:
+HALB_HAUPT -> HALB    7.073579
+MORA_HAUPT -> MORA    6.908147
+MORA_HAUPT -> HALB    5.285483
+HALB   -> HALB    4.646928
+DOPPEL -> MORA_HAUPT 4.276168
+MORA_HAUPT -> EL      4.042793
+MORA   -> MORA_HAUPT 3.381654
+MORA   -> DOPPEL  2.970047
+EL     -> MORA    2.556847
+DOPPEL -> HALB_HAUPT 2.065229
+MORA   -> HALB_HAUPT 2.056863
+HALB   -> MORA_HAUPT 0.095575
+MORA_HAUPT -> MORA_HAUPT -1.196959
+
+Top positive:
+4.844241 DOPPEL lh=H
+3.432040 EL     +1:syllable[:1]=e
+3.243139 MORA   +7:lpos=LPNA
+3.081738 MORA_HAUPT lpos=ENDL
+2.963416 DOPPEL bias
+2.914717 MORA_HAUPT lh=H
+2.383408 EL     +1:syllable[:1]=i
+2.236057 EL     +1:syllable[:1]=a
+2.225594 DOPPEL +1:wpos=WBYR
+1.885394 HALB_HAUPT lh=L
+1.739375 MORA   lpos=BEGL
+1.679938 EL     syllable[-1:]=e
+1.543616 DOPPEL +1:lh=L
+1.512985 DOPPEL +1:syllable[-2:]=en
+1.478591 MORA   +5:syllable[:2]=li
+1.427910 MORA   syllable[-2:]=ch
+1.364934 MORA   +7:lh=H
+1.274026 MORA   +4:syllable[:2]=wa
+1.240992 MORA   +7:wpos=WBYR
+1.218378 MORA   len(syllable)=2
+
+Top negative:
+-0.871614 DOPPEL EOL
+-0.897401 HALB   syllable[:1]=w
+-0.932392 MORA_HAUPT syllable[-2:]=il
+-0.947905 MORA   syllable[-1:]=t
+-0.986701 DOPPEL BOL
+-1.013466 HALB   -2:wpos=WBYR
+-1.015867 MORA_HAUPT +7:wpos=WBYR
+-1.046384 HALB   -2:lh=L
+-1.157129 MORA_HAUPT syllable[-2:]=en
+-1.285862 MORA_HAUPT lpos=LPNA
+-1.363858 EL     lh=H
+-1.384703 MORA   -4:syllable[:1]=r
+-1.431453 MORA   +1:syllable[-2:]=en
+-1.451304 EL     bias
+-1.514751 MORA_HAUPT +6:syllable[-2:]=te
+-1.638655 DOPPEL +5:lh=H
+-1.659806 HALB   wpos=WBYL
+-1.761340 MORA   +1:syllable[-2:]=et
+-2.019711 MORA_HAUPT +1:syllable[:2]=mî
+-4.249492 MORA_HAUPT +1:lpos=ENDL
 
 Fold 2 complete.
+------------------------------------------------------
+------------------------------------------------------
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.91      0.87      0.89        47
-         EL       1.00      1.00      1.00         6
-       HALB       0.78      0.78      0.78        27
- HALB_HAUPT       0.94      0.89      0.92        19
-       MORA       0.93      0.94      0.93       231
- MORA_HAUPT       0.94      0.95      0.95       235
+     DOPPEL       0.93      0.93      0.93        40
+         EL       0.88      1.00      0.93         7
+       HALB       0.85      0.81      0.83        21
+ HALB_HAUPT       0.92      1.00      0.96        11
+       MORA       0.97      0.96      0.97       247
+ MORA_HAUPT       0.97      0.97      0.97       248
 
-avg / total       0.93      0.93      0.93       565
+avg / total       0.96      0.96      0.96       574
+
+Top likely transitions:
+HALB_HAUPT -> HALB    7.470185
+MORA_HAUPT -> MORA    6.051849
+HALB   -> HALB    5.306793
+MORA_HAUPT -> HALB    4.956975
+DOPPEL -> MORA_HAUPT 4.660051
+MORA_HAUPT -> EL      3.640578
+MORA   -> MORA_HAUPT 2.909886
+DOPPEL -> HALB_HAUPT 2.306786
+MORA   -> DOPPEL  2.247226
+EL     -> MORA    1.601166
+MORA   -> HALB_HAUPT 1.450464
+HALB   -> MORA_HAUPT 0.535703
+MORA   -> MORA    -0.558638
+MORA_HAUPT -> DOPPEL  -0.587169
+EL     -> MORA_HAUPT -0.754819
+
+Top unlikely transitions:
+MORA_HAUPT -> MORA    6.051849
+HALB   -> HALB    5.306793
+MORA_HAUPT -> HALB    4.956975
+DOPPEL -> MORA_HAUPT 4.660051
+MORA_HAUPT -> EL      3.640578
+MORA   -> MORA_HAUPT 2.909886
+DOPPEL -> HALB_HAUPT 2.306786
+MORA   -> DOPPEL  2.247226
+EL     -> MORA    1.601166
+MORA   -> HALB_HAUPT 1.450464
+HALB   -> MORA_HAUPT 0.535703
+MORA   -> MORA    -0.558638
+MORA_HAUPT -> DOPPEL  -0.587169
+EL     -> MORA_HAUPT -0.754819
+MORA_HAUPT -> MORA_HAUPT -1.555226
+
+Top positive:
+4.972625 DOPPEL lh=H
+3.629158 EL     +1:syllable[:1]=e
+3.507415 MORA_HAUPT lpos=ENDL
+2.880214 MORA_HAUPT lh=H
+2.837938 EL     +1:syllable[:1]=i
+2.750523 DOPPEL +1:wpos=WBYR
+2.450989 EL     +1:syllable[:1]=a
+2.302348 EL     +1:syllable[:2]=ou
+2.210088 DOPPEL bias
+1.988892 MORA   +7:lpos=LPNA
+1.826434 HALB_HAUPT lh=L
+1.574944 EL     +1:syllable[:2]=un
+1.527004 MORA   +5:syllable[:2]=li
+1.522309 MORA   +6:lh=H
+1.465469 DOPPEL +1:syllable[-1:]=î
+1.451609 MORA   lh=H
+1.410899 DOPPEL +1:lh=L
+1.384321 EL     syllable[-1:]=e
+1.363943 HALB   +2:lh=H
+1.335391 MORA   lpos=BEGL
+
+Top negative:
+-0.864394 MORA   (-3:syllable[-1] + syllable[0])=%serte
+-0.867200 DOPPEL EOL
+-0.877049 MORA_HAUPT +7:wpos=WBYR
+-0.902206 MORA   +1:syllable[:2]=ge
+-0.903843 DOPPEL -1:oc=O
+-0.918419 MORA   +1:syllable[:2]=be
+-0.940626 HALB   oc=O
+-0.946594 MORA_HAUPT lpos=LPNA
+-0.976842 MORA   +1:syllable[:1]=u
+-0.978597 MORA   +1:syllable[-2:]=en
+-1.046908 MORA   +4:syllable[:2]=ma
+-1.074329 MORA_HAUPT +6:syllable[-2:]=te
+-1.091028 MORA   len(syllable)=5
+-1.114285 MORA_HAUPT +4:len(syllable)=1
+-1.161243 HALB_HAUPT wpos=WBYR
+-1.163422 MORA_HAUPT wpos=WBYR
+-1.603405 HALB   -2:lh=L
+-1.884826 HALB   wpos=WBYL
+-1.899600 DOPPEL +5:lh=H
+-3.742924 MORA_HAUPT +1:lpos=ENDL
 
 Fold 3 complete.
+------------------------------------------------------
+------------------------------------------------------
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.84      0.89      0.86        36
-         EL       1.00      0.71      0.83         7
-       HALB       0.67      0.67      0.67        21
- HALB_HAUPT       0.86      0.86      0.86         7
-       MORA       0.94      0.93      0.94       244
- MORA_HAUPT       0.95      0.95      0.95       254
+     DOPPEL       0.86      0.84      0.85        38
+         EL       0.33      0.50      0.40         2
+       HALB       0.74      0.61      0.67        28
+ HALB_HAUPT       0.85      0.79      0.81        14
+       MORA       0.93      0.94      0.94       249
+ MORA_HAUPT       0.94      0.95      0.95       248
 
-avg / total       0.92      0.92      0.92       569
+avg / total       0.92      0.92      0.92       579
+
+Top likely transitions:
+HALB_HAUPT -> HALB    7.560204
+MORA_HAUPT -> MORA    6.058048
+HALB   -> HALB    5.197732
+MORA_HAUPT -> HALB    4.712165
+DOPPEL -> MORA_HAUPT 4.520095
+MORA_HAUPT -> EL      3.210401
+MORA   -> MORA_HAUPT 2.771997
+MORA   -> DOPPEL  2.356857
+DOPPEL -> HALB_HAUPT 2.321676
+EL     -> MORA    1.756985
+MORA   -> HALB_HAUPT 1.345499
+HALB   -> MORA_HAUPT 0.474460
+MORA_HAUPT -> DOPPEL  -0.388617
+MORA   -> MORA    -0.710032
+EL     -> MORA_HAUPT -0.854253
+
+Top unlikely transitions:
+MORA_HAUPT -> MORA    6.058048
+HALB   -> HALB    5.197732
+MORA_HAUPT -> HALB    4.712165
+DOPPEL -> MORA_HAUPT 4.520095
+MORA_HAUPT -> EL      3.210401
+MORA   -> MORA_HAUPT 2.771997
+MORA   -> DOPPEL  2.356857
+DOPPEL -> HALB_HAUPT 2.321676
+EL     -> MORA    1.756985
+MORA   -> HALB_HAUPT 1.345499
+HALB   -> MORA_HAUPT 0.474460
+MORA_HAUPT -> DOPPEL  -0.388617
+MORA   -> MORA    -0.710032
+EL     -> MORA_HAUPT -0.854253
+MORA_HAUPT -> MORA_HAUPT -1.822130
+
+Top positive:
+5.210570 DOPPEL lh=H
+3.416702 EL     +1:syllable[:1]=e
+3.069428 MORA_HAUPT lpos=ENDL
+3.028092 MORA_HAUPT lh=H
+3.005727 MORA   +7:lpos=LPNA
+2.875508 EL     +1:syllable[:1]=i
+2.712339 DOPPEL +1:wpos=WBYR
+2.054603 EL     +1:syllable[:1]=a
+1.910965 DOPPEL bias
+1.787420 EL     +1:syllable[:2]=ou
+1.697950 HALB_HAUPT lh=L
+1.586342 MORA   +5:syllable[:2]=li
+1.539562 DOPPEL +1:lh=L
+1.477218 MORA   lh=H
+1.403131 EL     syllable[-1:]=e
+1.378306 MORA   lpos=BEGL
+1.343718 DOPPEL +1:syllable[-2:]=en
+1.308258 EL     +1:syllable[:2]=un
+1.263025 HALB   +2:lh=H
+1.246067 HALB   -1:wpos=WBYR
+
+Top negative:
+-0.917215 HALB   -1:syllable[:2]=ge
+-0.924861 MORA   +5:syllable[-2:]=me
+-0.948349 DOPPEL -1:oc=O
+-0.954112 MORA   +1:syllable[:2]=ge
+-0.960297 EL     wpos=MONO
+-0.960801 MORA_HAUPT syllable[-2:]=il
+-0.963133 MORA_HAUPT +1:lh=H
+-0.994300 DOPPEL len(syllable)=1
+-1.001857 MORA_HAUPT +7:wpos=WBYR
+-1.025911 MORA_HAUPT +1:syllable[:2]=mî
+-1.076032 MORA   +1:syllable[-2:]=en
+-1.110854 MORA_HAUPT syllable[-2:]=en
+-1.149120 MORA_HAUPT +4:len(syllable)=1
+-1.169897 HALB   -2:lh=L
+-1.195185 MORA_HAUPT +6:syllable[-2:]=te
+-1.198656 HALB_HAUPT wpos=WBYR
+-1.237900 MORA   len(syllable)=5
+-1.821147 HALB   wpos=WBYL
+-1.823233 DOPPEL +5:lh=H
+-4.219904 MORA_HAUPT +1:lpos=ENDL
 
 Fold 4 complete.
+------------------------------------------------------
+------------------------------------------------------
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.93      0.89      0.91        45
-         EL       1.00      0.71      0.83         7
-       HALB       0.45      0.50      0.47        18
- HALB_HAUPT       0.71      0.83      0.77         6
-       MORA       0.95      0.95      0.95       234
- MORA_HAUPT       0.96      0.96      0.96       249
+     DOPPEL       0.93      0.87      0.90        45
+         EL       1.00      1.00      1.00         6
+       HALB       0.82      0.90      0.86        10
+ HALB_HAUPT       0.80      0.67      0.73         6
+       MORA       0.95      0.95      0.95       242
+ MORA_HAUPT       0.95      0.97      0.96       248
 
-avg / total       0.94      0.93      0.93       559
+avg / total       0.95      0.95      0.95       557
+
+Top likely transitions:
+HALB_HAUPT -> HALB    7.307526
+MORA_HAUPT -> MORA    6.229231
+HALB   -> HALB    5.187564
+MORA_HAUPT -> HALB    5.122963
+DOPPEL -> MORA_HAUPT 4.855322
+MORA_HAUPT -> EL      3.385889
+MORA   -> MORA_HAUPT 3.320669
+MORA   -> DOPPEL  2.428413
+DOPPEL -> HALB_HAUPT 2.233862
+EL     -> MORA    1.737698
+MORA   -> HALB_HAUPT 1.526835
+HALB   -> MORA_HAUPT 0.664319
+EL     -> MORA_HAUPT -0.363494
+MORA_HAUPT -> DOPPEL  -0.458836
+MORA   -> MORA    -0.676566
+
+Top unlikely transitions:
+MORA_HAUPT -> MORA    6.229231
+HALB   -> HALB    5.187564
+MORA_HAUPT -> HALB    5.122963
+DOPPEL -> MORA_HAUPT 4.855322
+MORA_HAUPT -> EL      3.385889
+MORA   -> MORA_HAUPT 3.320669
+MORA   -> DOPPEL  2.428413
+DOPPEL -> HALB_HAUPT 2.233862
+EL     -> MORA    1.737698
+MORA   -> HALB_HAUPT 1.526835
+HALB   -> MORA_HAUPT 0.664319
+EL     -> MORA_HAUPT -0.363494
+MORA_HAUPT -> DOPPEL  -0.458836
+MORA   -> MORA    -0.676566
+MORA_HAUPT -> MORA_HAUPT -1.416861
+
+Top positive:
+5.301963 DOPPEL lh=H
+3.437753 EL     +1:syllable[:1]=e
+3.162527 MORA_HAUPT lh=H
+2.879710 MORA_HAUPT lpos=ENDL
+2.726407 EL     +1:syllable[:1]=i
+2.452081 MORA   +7:lpos=LPNA
+2.374949 DOPPEL +1:wpos=WBYR
+2.326688 EL     +1:syllable[:1]=a
+2.072923 EL     +1:syllable[:2]=ou
+1.777236 DOPPEL +1:syllable[-2:]=en
+1.725953 DOPPEL +1:lh=L
+1.668504 DOPPEL bias
+1.570188 HALB_HAUPT lh=L
+1.550724 MORA   +5:syllable[:2]=li
+1.493219 MORA   syllable[-2:]=ch
+1.464960 EL     +1:syllable[:2]=un
+1.417601 EL     syllable[-1:]=e
+1.415995 MORA   +6:lh=H
+1.402582 MORA_HAUPT -1:lh=H
+1.360249 MORA   len(syllable)=2
+
+Top negative:
+-0.871378 MORA   +3:syllable[:2]=te
+-0.904100 HALB_HAUPT +1:lpos=LPNA
+-0.956210 MORA   +1:syllable[:2]=be
+-0.961983 MORA   +1:syllable[:2]=ge
+-0.965756 MORA_HAUPT syllable[-2:]=ge
+-0.968838 DOPPEL +3:lh=H
+-0.981906 MORA   +4:syllable[:2]=si
+-1.014759 HALB   -1:syllable[:2]=ge
+-1.020274 MORA_HAUPT syllable[-2:]=et
+-1.041727 MORA_HAUPT +7:syllable[-1:]=e
+-1.049977 MORA   -4:syllable[:1]=r
+-1.059703 EL     wpos=MONO
+-1.114096 MORA_HAUPT lpos=LPNA
+-1.167121 MORA_HAUPT +6:syllable[-2:]=te
+-1.220084 MORA_HAUPT +7:wpos=WBYR
+-1.296036 MORA   len(syllable)=5
+-1.544181 DOPPEL +5:lh=H
+-1.623432 HALB   -2:lh=L
+-1.767111 HALB   wpos=WBYL
+-3.996215 MORA_HAUPT +1:lpos=ENDL
 
 Fold 5 complete.
+------------------------------------------------------
+------------------------------------------------------
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.92      0.90      0.91        40
-         EL       0.83      1.00      0.91         5
-       HALB       0.58      0.58      0.58        26
- HALB_HAUPT       0.67      0.80      0.73        10
-       MORA       0.93      0.93      0.93       244
- MORA_HAUPT       0.94      0.94      0.94       249
+     DOPPEL       0.85      0.85      0.85        41
+         EL       1.00      0.89      0.94         9
+       HALB       0.71      0.60      0.65        20
+ HALB_HAUPT       0.67      1.00      0.80         8
+       MORA       0.94      0.95      0.95       246
+ MORA_HAUPT       0.96      0.95      0.95       250
 
-avg / total       0.91      0.91      0.91       574
+avg / total       0.93      0.93      0.93       574
+
+Top likely transitions:
+HALB_HAUPT -> HALB    6.965001
+MORA_HAUPT -> MORA    6.827916
+DOPPEL -> MORA_HAUPT 5.758157
+MORA_HAUPT -> HALB    5.498280
+HALB   -> HALB    4.890927
+MORA_HAUPT -> EL      4.212321
+MORA   -> MORA_HAUPT 4.140283
+MORA   -> DOPPEL  2.376283
+DOPPEL -> HALB_HAUPT 1.650815
+EL     -> MORA    1.596614
+HALB   -> MORA_HAUPT 1.481198
+MORA   -> HALB_HAUPT 1.236255
+MORA   -> MORA    -0.629301
+
+Top unlikely transitions:
+HALB_HAUPT -> HALB    6.965001
+MORA_HAUPT -> MORA    6.827916
+DOPPEL -> MORA_HAUPT 5.758157
+MORA_HAUPT -> HALB    5.498280
+HALB   -> HALB    4.890927
+MORA_HAUPT -> EL      4.212321
+MORA   -> MORA_HAUPT 4.140283
+MORA   -> DOPPEL  2.376283
+DOPPEL -> HALB_HAUPT 1.650815
+EL     -> MORA    1.596614
+HALB   -> MORA_HAUPT 1.481198
+MORA   -> HALB_HAUPT 1.236255
+MORA   -> MORA    -0.629301
+
+Top positive:
+5.188080 DOPPEL lh=H
+3.461813 EL     +1:syllable[:1]=e
+3.073737 MORA   +7:lpos=LPNA
+2.760665 MORA_HAUPT lh=H
+2.726391 EL     +1:syllable[:1]=i
+2.482307 MORA_HAUPT lpos=ENDL
+2.390466 EL     +1:syllable[:1]=a
+2.239620 DOPPEL +1:wpos=WBYR
+2.143061 EL     +1:syllable[:2]=ou
+2.046239 HALB_HAUPT lh=L
+1.952305 DOPPEL bias
+1.600310 EL     syllable[-1:]=e
+1.447586 DOPPEL +1:lh=L
+1.317360 MORA   lpos=BEGL
+1.297958 EL     +1:syllable[:2]=un
+1.267614 DOPPEL +1:syllable[-1:]=î
+1.210634 DOPPEL -4:syllable[:1]=m
+1.198460 MORA   lh=H
+1.159730 MORA   +6:lh=H
+1.114729 HALB   syllable[:2]=ge
+
+Top negative:
+-0.948798 DOPPEL EOL
+-0.952295 MORA_HAUPT +7:wpos=WBYR
+-0.971073 DOPPEL -1:oc=O
+-0.972075 MORA   +1:syllable[:2]=ge
+-0.989660 MORA   -4:syllable[:1]=r
+-0.989978 MORA_HAUPT +7:syllable[-1:]=e
+-1.015534 DOPPEL +3:lh=H
+-1.041576 MORA   +1:syllable[:1]=u
+-1.064750 MORA_HAUPT syllable[-2:]=il
+-1.072121 MORA_HAUPT wpos=WBYR
+-1.087676 MORA   +1:syllable[:2]=be
+-1.239857 MORA   len(syllable)=5
+-1.324095 DOPPEL -3:syllable[:1]=t
+-1.361435 MORA   +4:syllable[:2]=ma
+-1.478160 MORA   +1:syllable[-2:]=en
+-1.623951 HALB   -2:lh=L
+-1.826330 HALB   wpos=WBYL
+-1.914085 DOPPEL +5:lh=H
+-2.246140 MORA_HAUPT lpos=LPNA
+-3.997598 MORA_HAUPT +1:lpos=ENDL
 
 Fold 6 complete.
+------------------------------------------------------
+------------------------------------------------------
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.89      0.87      0.88        46
-         EL       1.00      0.83      0.91         6
-       HALB       0.68      0.62      0.65        21
- HALB_HAUPT       1.00      1.00      1.00        11
-       MORA       0.91      0.92      0.92       229
- MORA_HAUPT       0.93      0.93      0.93       243
+     DOPPEL       0.87      0.83      0.85        41
+         EL       1.00      0.80      0.89         5
+       HALB       0.68      0.68      0.68        28
+ HALB_HAUPT       0.83      0.62      0.71         8
+       MORA       0.91      0.91      0.91       227
+ MORA_HAUPT       0.93      0.94      0.93       251
 
-avg / total       0.91      0.91      0.91       556
+avg / total       0.90      0.90      0.90       560
+
+Top likely transitions:
+HALB_HAUPT -> HALB    7.427978
+MORA_HAUPT -> MORA    5.817996
+HALB   -> HALB    4.924199
+MORA_HAUPT -> HALB    4.571829
+DOPPEL -> MORA_HAUPT 4.382892
+MORA_HAUPT -> EL      3.310548
+MORA   -> MORA_HAUPT 2.920481
+MORA   -> DOPPEL  2.589183
+DOPPEL -> HALB_HAUPT 2.054468
+EL     -> MORA    2.026273
+MORA   -> HALB_HAUPT 1.599861
+HALB   -> MORA_HAUPT 0.177828
+MORA   -> MORA    -0.218898
+EL     -> MORA_HAUPT -0.774884
+MORA_HAUPT -> DOPPEL  -0.809002
+
+Top unlikely transitions:
+MORA_HAUPT -> MORA    5.817996
+HALB   -> HALB    4.924199
+MORA_HAUPT -> HALB    4.571829
+DOPPEL -> MORA_HAUPT 4.382892
+MORA_HAUPT -> EL      3.310548
+MORA   -> MORA_HAUPT 2.920481
+MORA   -> DOPPEL  2.589183
+DOPPEL -> HALB_HAUPT 2.054468
+EL     -> MORA    2.026273
+MORA   -> HALB_HAUPT 1.599861
+HALB   -> MORA_HAUPT 0.177828
+MORA   -> MORA    -0.218898
+EL     -> MORA_HAUPT -0.774884
+MORA_HAUPT -> DOPPEL  -0.809002
+MORA_HAUPT -> MORA_HAUPT -1.979692
+
+Top positive:
+4.946286 DOPPEL lh=H
+3.622606 MORA_HAUPT lpos=ENDL
+3.097486 EL     +1:syllable[:1]=e
+2.800960 DOPPEL +1:wpos=WBYR
+2.590689 MORA   +7:lpos=LPNA
+2.567298 MORA_HAUPT lh=H
+2.427887 EL     +1:syllable[:1]=i
+2.189083 HALB_HAUPT lh=L
+1.938106 DOPPEL +1:lh=L
+1.675432 EL     +1:syllable[:1]=a
+1.660089 MORA   lpos=BEGL
+1.654948 DOPPEL +1:syllable[-1:]=î
+1.542990 EL     syllable[-1:]=e
+1.427540 MORA_HAUPT (-2:syllable[-1] + syllable[0])=%sküge
+1.412632 HALB   syllable[:2]=ge
+1.406587 MORA   len(syllable)=2
+1.387032 HALB   (-1:syllable[-1] + syllable[0])=%snege
+1.311505 DOPPEL +1:syllable[-2:]=en
+1.307175 HALB   syllable[-2:]=et
+1.304946 MORA   +4:syllable[:2]=wa
+
+Top negative:
+-0.871503 MORA_HAUPT +7:lpos=LPNA
+-0.883880 HALB   syllable[:1]=w
+-0.886862 MORA_HAUPT syllable[-2:]=en
+-0.889462 HALB_HAUPT +1:lpos=LPNA
+-0.901654 MORA_HAUPT wpos=WBYR
+-0.903801 EL     wpos=MONO
+-0.929436 MORA   -4:syllable[:1]=r
+-0.968026 DOPPEL +3:lh=H
+-1.006087 MORA_HAUPT +4:len(syllable)=1
+-1.047521 MORA_HAUPT +7:wpos=WBYR
+-1.073270 MORA_HAUPT +6:syllable[-2:]=te
+-1.078796 MORA_HAUPT +1:syllable[:2]=mî
+-1.081293 MORA_HAUPT +7:len(syllable)=4
+-1.129976 HALB   -2:lh=L
+-1.205231 MORA   +5:syllable[-2:]=me
+-1.281507 MORA   +1:syllable[-2:]=en
+-1.325665 MORA   +1:syllable[:2]=be
+-1.773355 HALB   wpos=WBYL
+-2.378721 DOPPEL +5:lh=H
+-3.842674 MORA_HAUPT +1:lpos=ENDL
 
 Fold 7 complete.
+------------------------------------------------------
+------------------------------------------------------
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.93      0.81      0.87        32
-         EL       1.00      0.33      0.50         6
-       HALB       0.75      0.94      0.83        16
- HALB_HAUPT       0.73      1.00      0.84         8
-       MORA       0.96      0.96      0.96       257
- MORA_HAUPT       0.97      0.97      0.97       260
+     DOPPEL       0.83      0.91      0.87        32
+         EL       0.90      0.75      0.82        12
+       HALB       0.63      0.55      0.59        31
+ HALB_HAUPT       0.92      0.71      0.80        17
+       MORA       0.91      0.93      0.92       250
+ MORA_HAUPT       0.93      0.93      0.93       251
 
-avg / total       0.95      0.95      0.95       579
+avg / total       0.90      0.90      0.90       593
+
+Top likely transitions:
+HALB_HAUPT -> HALB    8.373916
+MORA_HAUPT -> MORA    5.730541
+HALB   -> HALB    5.333541
+MORA_HAUPT -> HALB    4.800967
+DOPPEL -> MORA_HAUPT 4.054917
+MORA_HAUPT -> EL      3.189331
+DOPPEL -> HALB_HAUPT 2.395033
+MORA   -> MORA_HAUPT 2.151051
+MORA   -> DOPPEL  2.123459
+EL     -> MORA    1.678207
+MORA   -> HALB_HAUPT 1.377207
+MORA_HAUPT -> DOPPEL  -0.734232
+MORA   -> MORA    -0.787089
+EL     -> MORA_HAUPT -1.214022
+MORA_HAUPT -> MORA_HAUPT -2.391329
+
+Top unlikely transitions:
+HALB_HAUPT -> HALB    8.373916
+MORA_HAUPT -> MORA    5.730541
+HALB   -> HALB    5.333541
+MORA_HAUPT -> HALB    4.800967
+DOPPEL -> MORA_HAUPT 4.054917
+MORA_HAUPT -> EL      3.189331
+DOPPEL -> HALB_HAUPT 2.395033
+MORA   -> MORA_HAUPT 2.151051
+MORA   -> DOPPEL  2.123459
+EL     -> MORA    1.678207
+MORA   -> HALB_HAUPT 1.377207
+MORA_HAUPT -> DOPPEL  -0.734232
+MORA   -> MORA    -0.787089
+EL     -> MORA_HAUPT -1.214022
+MORA_HAUPT -> MORA_HAUPT -2.391329
+
+Top positive:
+5.403576 DOPPEL lh=H
+3.770832 MORA_HAUPT lpos=ENDL
+3.579069 EL     +1:syllable[:1]=e
+2.715067 EL     +1:syllable[:1]=i
+2.584786 EL     +1:syllable[:1]=a
+2.579552 MORA_HAUPT lh=H
+2.499873 MORA   +7:lpos=LPNA
+2.467481 DOPPEL +1:wpos=WBYR
+1.606202 DOPPEL bias
+1.551858 MORA   +5:syllable[:2]=li
+1.510752 EL     +1:syllable[:2]=un
+1.439123 MORA   +4:syllable[:2]=wa
+1.421797 DOPPEL +1:lh=L
+1.358423 MORA   +6:lh=H
+1.354354 MORA   lpos=BEGL
+1.341169 MORA   +7:wpos=WBYR
+1.331369 EL     syllable[-1:]=e
+1.325551 MORA   syllable[:2]=ge
+1.265531 MORA   lh=H
+1.246015 MORA   len(syllable)=2
+
+Top negative:
+-0.857196 MORA   len(syllable)=5
+-0.861321 MORA   -4:syllable[:1]=r
+-0.865001 MORA   syllable[:1]=g
+-0.869890 MORA_HAUPT -7:lpos=LPNA
+-0.887302 DOPPEL -1:oc=O
+-0.910509 MORA   +3:syllable[:2]=te
+-0.941723 MORA_HAUPT +1:syllable[:2]=mî
+-0.954680 MORA   +1:syllable[:2]=be
+-0.990574 MORA   +1:syllable[-2:]=er
+-1.036614 MORA_HAUPT +7:lpos=LPNA
+-1.130089 DOPPEL +3:lh=H
+-1.137202 MORA_HAUPT +6:syllable[-2:]=te
+-1.184827 MORA   +1:syllable[-2:]=en
+-1.200237 MORA_HAUPT +4:len(syllable)=1
+-1.305331 MORA   +1:syllable[:1]=u
+-1.347121 HALB   -2:lh=L
+-1.507795 MORA   +5:syllable[:2]=me
+-1.934783 HALB   wpos=WBYL
+-2.067164 DOPPEL +5:lh=H
+-4.314398 MORA_HAUPT +1:lpos=ENDL
 
 Fold 8 complete.
+------------------------------------------------------
+------------------------------------------------------
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.84      0.81      0.83        47
-         EL       0.80      0.57      0.67         7
-       HALB       0.54      0.62      0.58        24
- HALB_HAUPT       0.89      0.57      0.70        14
-       MORA       0.92      0.91      0.92       238
- MORA_HAUPT       0.92      0.95      0.94       238
+     DOPPEL       0.93      0.86      0.89        44
+         EL       0.50      0.43      0.46         7
+       HALB       0.83      0.63      0.72        30
+ HALB_HAUPT       0.79      0.79      0.79        14
+       MORA       0.92      0.95      0.94       238
+ MORA_HAUPT       0.94      0.96      0.95       241
 
-avg / total       0.90      0.90      0.90       568
+avg / total       0.92      0.92      0.92       574
+
+Top likely transitions:
+HALB_HAUPT -> HALB    6.470752
+MORA_HAUPT -> MORA    6.051884
+DOPPEL -> MORA_HAUPT 5.545899
+HALB   -> HALB    4.401981
+MORA_HAUPT -> HALB    4.239507
+MORA   -> MORA_HAUPT 4.150245
+MORA_HAUPT -> EL      3.288876
+MORA   -> DOPPEL  2.838870
+EL     -> MORA    2.271937
+MORA   -> HALB_HAUPT 1.937468
+DOPPEL -> HALB_HAUPT 1.882733
+HALB   -> MORA_HAUPT 1.011039
+MORA_HAUPT -> DOPPEL  -0.605388
+MORA_HAUPT -> MORA_HAUPT -0.978711
+
+Top unlikely transitions:
+HALB_HAUPT -> HALB    6.470752
+MORA_HAUPT -> MORA    6.051884
+DOPPEL -> MORA_HAUPT 5.545899
+HALB   -> HALB    4.401981
+MORA_HAUPT -> HALB    4.239507
+MORA   -> MORA_HAUPT 4.150245
+MORA_HAUPT -> EL      3.288876
+MORA   -> DOPPEL  2.838870
+EL     -> MORA    2.271937
+MORA   -> HALB_HAUPT 1.937468
+DOPPEL -> HALB_HAUPT 1.882733
+HALB   -> MORA_HAUPT 1.011039
+MORA_HAUPT -> DOPPEL  -0.605388
+MORA_HAUPT -> MORA_HAUPT -0.978711
+
+Top positive:
+5.507398 DOPPEL lh=H
+3.079290 EL     +1:syllable[:1]=e
+2.783102 MORA_HAUPT lpos=ENDL
+2.679632 MORA_HAUPT lh=H
+2.493735 EL     +1:syllable[:1]=i
+2.394995 EL     +1:syllable[:2]=ou
+2.267630 EL     +1:syllable[:1]=a
+2.162980 DOPPEL bias
+1.917008 DOPPEL +1:wpos=WBYR
+1.846939 MORA   lpos=BEGL
+1.781695 MORA   +7:lpos=LPNA
+1.729427 HALB_HAUPT lh=L
+1.594847 HALB   +2:lh=H
+1.553851 HALB   syllable[:2]=ge
+1.482822 DOPPEL +1:lh=L
+1.410893 MORA   lh=H
+1.371460 HALB   -1:wpos=WBYR
+1.368033 MORA   syllable[:2]=ve
+1.280982 MORA_HAUPT -1:lh=H
+1.243872 MORA   +6:lh=H
+
+Top negative:
+-0.872738 MORA   -3:syllable[-2:]=en
+-0.875677 MORA   wpos=WBYL
+-0.915793 HALB   -1:syllable[:1]=b
+-0.945996 MORA   +3:syllable[:2]=te
+-0.946277 MORA_HAUPT +1:syllable[:2]=mî
+-0.983416 MORA_HAUPT syllable[-2:]=il
+-0.988664 HALB   -1:syllable[:2]=ge
+-1.026546 DOPPEL EOL
+-1.032086 MORA   len(syllable)=5
+-1.073619 MORA_HAUPT +7:lpos=LPNA
+-1.107877 MORA_HAUPT +7:syllable[-1:]=e
+-1.153817 MORA   +1:syllable[-2:]=en
+-1.206540 HALB   -2:lh=L
+-1.224006 MORA_HAUPT +6:syllable[-2:]=te
+-1.435870 MORA   +1:syllable[:2]=be
+-1.516583 EL     lh=H
+-1.628538 DOPPEL +5:lh=H
+-1.899702 MORA_HAUPT lpos=LPNA
+-2.351177 HALB   wpos=WBYL
+-3.252748 MORA_HAUPT +1:lpos=ENDL
 
 Fold 9 complete.
+------------------------------------------------------
+------------------------------------------------------
 
              precision    recall  f1-score   support
 
-     DOPPEL       0.94      0.89      0.91        36
-         EL       1.00      0.88      0.93         8
-       HALB       0.71      0.53      0.61        32
- HALB_HAUPT       0.89      0.80      0.84        10
-       MORA       0.93      0.96      0.94       235
- MORA_HAUPT       0.95      0.96      0.95       253
+     DOPPEL       0.93      0.89      0.91        44
+         EL       0.80      0.57      0.67         7
+       HALB       0.54      0.65      0.59        20
+ HALB_HAUPT       1.00      0.75      0.86        12
+       MORA       0.96      0.95      0.95       240
+ MORA_HAUPT       0.95      0.97      0.96       243
 
-avg / total       0.92      0.93      0.92       574
+avg / total       0.94      0.93      0.93       566
+
+Top likely transitions:
+HALB_HAUPT -> HALB    7.498856
+MORA_HAUPT -> MORA    6.070950
+HALB   -> HALB    5.172062
+MORA_HAUPT -> HALB    4.976512
+DOPPEL -> MORA_HAUPT 4.522788
+MORA_HAUPT -> EL      3.327047
+MORA   -> MORA_HAUPT 2.833157
+MORA   -> DOPPEL  2.303893
+DOPPEL -> HALB_HAUPT 2.231340
+EL     -> MORA    1.842824
+MORA   -> HALB_HAUPT 1.126423
+HALB   -> MORA_HAUPT 0.494657
+MORA_HAUPT -> DOPPEL  -0.501267
+MORA   -> MORA    -0.567481
+EL     -> MORA_HAUPT -0.741803
+
+Top unlikely transitions:
+MORA_HAUPT -> MORA    6.070950
+HALB   -> HALB    5.172062
+MORA_HAUPT -> HALB    4.976512
+DOPPEL -> MORA_HAUPT 4.522788
+MORA_HAUPT -> EL      3.327047
+MORA   -> MORA_HAUPT 2.833157
+MORA   -> DOPPEL  2.303893
+DOPPEL -> HALB_HAUPT 2.231340
+EL     -> MORA    1.842824
+MORA   -> HALB_HAUPT 1.126423
+HALB   -> MORA_HAUPT 0.494657
+MORA_HAUPT -> DOPPEL  -0.501267
+MORA   -> MORA    -0.567481
+EL     -> MORA_HAUPT -0.741803
+MORA_HAUPT -> MORA_HAUPT -1.653282
+
+Top positive:
+4.858072 DOPPEL lh=H
+4.100236 MORA_HAUPT lpos=ENDL
+3.392015 EL     +1:syllable[:1]=e
+2.713448 DOPPEL +1:wpos=WBYR
+2.600099 MORA_HAUPT lh=H
+2.247299 EL     +1:syllable[:1]=i
+2.154356 DOPPEL bias
+2.134877 EL     +1:syllable[:1]=a
+2.086082 MORA   +7:lpos=LPNA
+1.873996 HALB_HAUPT lh=L
+1.696081 EL     +1:syllable[:2]=ou
+1.544416 MORA   lpos=BEGL
+1.536913 DOPPEL +1:lh=L
+1.448455 MORA   +5:syllable[:2]=li
+1.398668 MORA   +7:syllable[-1:]=e
+1.372340 HALB   +2:lh=H
+1.316999 MORA   len(syllable)=2
+1.303116 EL     syllable[-1:]=e
+1.284841 DOPPEL +1:syllable[-1:]=î
+1.275182 DOPPEL +1:syllable[-2:]=en
+
+Top negative:
+-0.912995 EL     lh=H
+-0.927670 HALB_HAUPT wpos=WBYR
+-0.942112 DOPPEL EOL
+-0.944243 MORA   +1:syllable[:2]=be
+-1.003554 MORA   +1:syllable[:1]=u
+-1.051846 MORA_HAUPT wpos=WBYR
+-1.085814 MORA   -4:syllable[:1]=r
+-1.165630 EL     bias
+-1.235945 MORA   len(syllable)=5
+-1.249114 MORA_HAUPT +4:len(syllable)=1
+-1.279657 HALB   -2:lh=L
+-1.285819 MORA_HAUPT +7:lpos=LPNA
+-1.315151 MORA_HAUPT +6:syllable[-2:]=te
+-1.338746 HALB   -1:syllable[:2]=ge
+-1.338841 MORA   +1:syllable[-2:]=en
+-1.367997 MORA_HAUPT +1:syllable[:2]=mî
+-1.474564 MORA_HAUPT +7:wpos=WBYR
+-1.758929 DOPPEL +5:lh=H
+-2.287954 HALB   wpos=WBYL
+-3.570367 MORA_HAUPT +1:lpos=ENDL
 
 Fold 10 complete.
+------------------------------------------------------
+------------------------------------------------------
 
    all_s                                             labels  support  \
-0   5693  DOPPELDOPPELDOPPELDOPPELDOPPELDOPPELDOPPELDOPP...      425   
-1   5693                               ELELELELELELELELELEL       65   
-2   5693           HALBHALBHALBHALBHALBHALBHALBHALBHALBHALB      231   
-3   5693  HALB_HAUPTHALB_HAUPTHALB_HAUPTHALB_HAUPTHALB_H...      107   
-4   5693           MORAMORAMORAMORAMORAMORAMORAMORAMORAMORA     2403   
-5   5693  MORA_HAUPTMORA_HAUPTMORA_HAUPTMORA_HAUPTMORA_H...     2462   
+0   5695  DOPPELDOPPELDOPPELDOPPELDOPPELDOPPELDOPPELDOPP...      424
+1   5695                               ELELELELELELELELELEL       65
+2   5695           HALBHALBHALBHALBHALBHALBHALBHALBHALBHALB      231
+3   5695  HALB_HAUPTHALB_HAUPTHALB_HAUPTHALB_HAUPTHALB_H...      107
+4   5695           MORAMORAMORAMORAMORAMORAMORAMORAMORAMORA     2405
+5   5695  MORA_HAUPTMORA_HAUPTMORA_HAUPTMORA_HAUPTMORA_H...     2463
 
-      p_AVG     r_AVG    f1_AVG  tots_AVG  
-0  0.912586  0.870588  0.890652  0.924727  
-1  0.899707  0.723077  0.786667  0.924117  
-2  0.658861  0.636364  0.641124  0.923576  
-3  0.845184  0.831776  0.829055  0.000000  
-4  0.935878  0.940075  0.937907  0.000000  
-5  0.945003  0.954102  0.949495  0.000000  
+      p_AVG     r_AVG    f1_AVG  tots_AVG
+0  0.898980  0.865566  0.881122  0.924878
+1  0.847564  0.723077  0.772621  0.924495
+2  0.719240  0.649351  0.672434  0.923724
+3  0.859507  0.803738  0.822051  0.000000
+4  0.934400  0.941788  0.937980  0.000000
+5  0.944206  0.954121  0.949111  0.000000
