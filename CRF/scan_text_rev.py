@@ -71,6 +71,9 @@ def only_four_stresses(lines_w_features, tagger, sylls):
                 if t_line[i2 - 1] in accs and t_line[i2 + 1] in accs:
                     stress += 5
 
+            if "DOPPELDOPPEL" in ''.join(t_line):
+                stress += 5
+
         # if > 4 stresses, look at probs
         if stress != 4:
             line_probs = []
@@ -123,9 +126,12 @@ def only_four_stresses(lines_w_features, tagger, sylls):
                         if c[i4 - 1][0] in accs:
                             stress += 5
 
-                    if 0 < i4 < len(c) - 1 and l == "EL":
-                        if c[i4 - 1] in accs and c[i4 + 1] in accs:
+                    if 0 < i4 < len(c) - 1 and l[0] == "EL":
+                        if c[i4 - 1][0] in accs and c[i4 + 1][0] in accs:
                             stress += 5
+
+                    if "DOPPELDOPPEL" in ''.join([l[0] for l in c]):
+                        stress += 5
 
                 if stress == 4 and tot_prob > final_line[1]:
                     final_line = (c, tot_prob)
