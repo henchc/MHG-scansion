@@ -8,15 +8,6 @@ CRF/__pycache__
 
 CRF/.DS_Store
 
-scan_text/parzival.txt
-
-scan_text/syllabipymhg3.py
-
-scan_text/corrections.csv
-
-__pycache__/
-scan_text/GUI/corrections.csv
-
-scan_text/GUI/syllabipymhg3.py
+GUI/*
 
 *.crfsuite
